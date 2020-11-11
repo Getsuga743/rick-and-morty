@@ -5,14 +5,48 @@ body {
   font-family: system-ui;
   font-size: 16px;
 }
+.grid {
+  display: grid;
+  height: 100vh;
+  padding: 4em;
+  grid-template-columns: 50px 1fr 1fr 200px;
+  grid-template-rows: 312px 1fr 1fr 1fr;
+  grid-template-areas: "asset-top logo logo social" "name character-name avatar avatar" "about character-description avatar avatar" "asset-bottom learn-more arrow other-line";
+}
 .logo {
+  grid-area: logo;
+  margin: 0 auto 2em;
+  max-width: 250px;
+  display: block;
+}
+.asset.top {
+  grid-area: asset-top;
+  writing-mode: vertical-rl;
+  border: 1px solid red;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-.navigation {
-  /* transform-origin: left bottom; */
+.social {
+  grid-area: social;
+}
+
+.navigation-name {
+  grid-area: name;
+  writing-mode: vertical-rl;
   transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+}
+.navigation-name a {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+.navigation {
+  display: none;
+  /* transform-origin: left bottom; */
   writing-mode: vertical-rl;
   position: absolute;
   left: 1em;
@@ -22,16 +56,16 @@ body {
   border: 1px solid red;
   margin: 0 1rem;
   text-transform: uppercase;
-  display: flex;
+
   justify-content: space-between;
-  padding-inline:3rem;
+  padding-inline: 3rem;
 }
 .navigation-text {
   display: inline-flex;
   /* padding: 20px 0; */
   margin-inline: 50px;
 }
-.links{
+.links {
   writing-mode: vertical-lr;
 }
 .dot {
