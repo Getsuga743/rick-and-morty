@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #00a5be;
+  font-family: system-ui;
+  font-size: 16px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navigation {
+  /* transform-origin: left bottom; */
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  position: absolute;
+  left: 1em;
+  height: calc(100vh - 6rem);
+  bottom: 0;
+  text-align: center;
+  border: 1px solid red;
+  margin: 0 1rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  padding-inline:3rem;
+}
+.navigation-text {
+  display: inline-flex;
+  /* padding: 20px 0; */
+  margin-inline: 50px;
+}
+.links{
+  writing-mode: vertical-lr;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-flex;
+  margin-inline: 10px;
+}
+.line {
+  width: 2px;
+  height: 150px;
+  background: black;
+  display: inline-flex;
+  margin-inline: 10px;
+}
+.img {
+  margin: auto;
+  padding: 0;
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0;
+}
+.character-grid {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.character-name {
+  font-size: 2rem;
+}
+
+.character-image {
+  width: auto;
+  max-width: 70%;
+  margin: auto;
+  border-radius: 50%;
+}
+
+.character-info-item {
+  background-color: #685128;
+  margin: 0.5rem;
+  padding: 0.5em;
+  color: white;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  .character-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name image" "labels image";
+  }
+  .character-info {
+    margin-left: 3rem;
+  }
+  .character-image {
+    grid-area: name;
+    width: 300px;
+    max-width: 70%;
+    margin: auto;
+    border-radius: 0;
+  }
+  .character-title {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  .character-title h2 {
+    position: relative;
+    padding: 1rem;
+    display: inline;
+    font-size: 50px;
+  }
+  .character-title h2::after {
+    content: "";
+    width: 87px;
+    height: 6px;
+    background-color: #f7391c;
+    display: inline-flex;
+    position: absolute;
+    left: calc(100%+10px);
+    top: 50%;
+  }
+  .character-info-list {
+    grid-area: labels;
+    max-width: 300px;
+    text-align: left;
+  }
+  .character-info-item {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 25px;
+
+    font-weight: 400;
+  }
+  .character-image {
+    grid-area: image;
+  }
+}
