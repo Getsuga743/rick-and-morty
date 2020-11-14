@@ -7,10 +7,11 @@ body {
 }
 .grid {
   display: grid;
-  height: 100vh;
+  height: calc(100vh - 8em);
   padding: 4em;
   grid-template-columns: 50px 1fr 1fr 200px;
-  grid-template-rows: 312px 1fr 1fr 1fr;
+  grid-template-rows: 230px 100px 1fr 1fr;
+  grid-column-gap: 6em;
   grid-template-areas: "asset-top logo logo social" "name character-name avatar avatar" "about character-description avatar avatar" "asset-bottom learn-more arrow other-line";
 }
 .logo {
@@ -19,34 +20,96 @@ body {
   max-width: 250px;
   display: block;
 }
-.asset.top {
-  grid-area: asset-top;
+.asset {
   writing-mode: vertical-rl;
   border: 1px solid red;
   display: flex;
   align-items: center;
 }
+.arrow .asset.top {
+  grid-area: asset-top;
+}
+.asset.bottom {
+  grid-area: asset-bottom;
+  justify-content: flex-end;
+}
 .social {
   grid-area: social;
+  display: inline-flex;
+  justify-content: center;
 }
-
-.navigation-name {
-  grid-area: name;
+.social a {
+ width: 2rem;
+ padding: 1rem;
+ cursor: pointer;
+  
+}
+.social a img{
+  width: 100%;
+}
+.navigation {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-.navigation-name a {
+.navigation.name {
+  grid-area: name;
+}
+.navigation.about {
+  grid-area: about;
+}
+.navigation a {
   text-decoration: none;
   color: black;
   font-size: 25px;
   text-transform: uppercase;
 }
 
-.navigation {
+.character-name-container {
+  display: flex;
+  align-items: center;
+  padding-inline-start: 1em;
+}
+
+
+.character-name-container div h2 {
+  font-size: 35px;
+}
+.character-image-container {
+  grid-area: avatar;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.arrow {
+  grid-area: arrow;
+  background-image: url("../img/arrow.png");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 35px;
+  cursor: pointer;
+  width: auto;
+}
+.character-description-container {
+  grid-area: character-description;
+}
+.learn-more {
+  grid-area: learn-more;
+  display: flex;
+  align-items: flex-end;
+  font-size: 25px;
+  text-transform: uppercase;
+  background-image: url("../img/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: left 170px bottom 5px;
+  background-size: 150px;
+}
+
+/* .navigation {
   display: none;
-  /* transform-origin: left bottom; */
+
   writing-mode: vertical-rl;
   position: absolute;
   left: 1em;
@@ -59,7 +122,7 @@ body {
 
   justify-content: space-between;
   padding-inline: 3rem;
-}
+} */
 .navigation-text {
   display: inline-flex;
   /* padding: 20px 0; */
@@ -128,11 +191,8 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "name image" "labels image";
   }
-  .character-info {
-    margin-left: 3rem;
-  }
+
   .character-image {
-    grid-area: name;
     width: 300px;
     max-width: 70%;
     margin: auto;
@@ -142,22 +202,7 @@ body {
     text-align: left;
     margin-bottom: 2rem;
   }
-  .character-title h2 {
-    position: relative;
-    padding: 1rem;
-    display: inline;
-    font-size: 50px;
-  }
-  .character-title h2::after {
-    content: "";
-    width: 87px;
-    height: 6px;
-    background-color: #f7391c;
-    display: inline-flex;
-    position: absolute;
-    left: calc(100%+10px);
-    top: 50%;
-  }
+
   .character-info-list {
     grid-area: labels;
     max-width: 300px;
@@ -167,10 +212,6 @@ body {
     padding: 1rem;
     margin: 1rem;
     font-size: 25px;
-
     font-weight: 400;
-  }
-  .character-image {
-    grid-area: image;
   }
 }
